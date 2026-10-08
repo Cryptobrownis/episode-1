@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Episode 1: Gelora Di Kamar Kost</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+        body {
+            background-color: #070709;
+            color: #e0e0e6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 6px;
+        }
+        .app-container {
+            width: 100%;
+            max-width: 420px;
+            background: #111118;
+            border-radius: 20px;
+            border: 1px solid #20202e;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.95);
+            display: flex;
+            flex-direction: column;
+            height: 95vh;
+            overflow: hidden;
+        }
+        .header {
+            padding: 14px;
+            background: #09090d;
+            text-align: center;
+            border-bottom: 1px solid #1a1a26;
+        }
+        .header h1 {
+            font-size: 1rem;
+            color: #ff477e;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .header p {
+            font-size: 0.72rem;
+            color: #8a8a9e;
+            margin-top: 3px;
+        }
+        .story-body {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+        .narrative {
+            font-size: 0.95rem;
+            line-height: 1.85;
+            color: #d1d1e0;
+            text-align: justify;
+        }
+        .dialogue {
+            background: #181824;
+            padding: 14px 16px;
+            border-left: 3px solid #ff477e;
+            border-radius: 0 12px 12px 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #ffffff;
+            font-style: italic;
+        }
+        .character-name {
+            font-weight: bold;
+            color: #ff7597;
+            font-style: normal;
+            display: block;
+            margin-bottom: 4px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+        .interactive-section {
+            padding: 14px;
+            background: #09090d;
+            border-top: 1px solid #1a1a26;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .choice-btn {
+            background: #1a1a26;
+            color: #ff7597;
+            border: 1px solid #ff477e;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: center;
+        }
+        .choice-btn:active {
+            background: #ff477e;
+            color: #ffffff;
+        }
+        .progress-bar {
+            height: 4px;
+            background: #1a1a26;
+            width: 100%;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff477e, #ff0055);
+            width: 10%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <div class="header">
+        <h1>Gelora Di Kamar Kost</h1>
+        <p>Episode 1: Terik dan Kehangatan Tersembunyi</p>
+    </div>
+    <div class="progress-bar">
+        <div class="progress-fill" id="progress"></div>
+    </div>
+    
+    <div class="story-body" id="storyBox">
+        <!-- Konten cerita diisi oleh JavaScript -->
+    </div>
+
+    <div class="interactive-section" id="choiceBox">
+        <!-- Tombol interaksi diisi oleh JavaScript -->
+    </div>
+</div>
+
+<script>
+const scenes = [
+    {
+        narrative: "Matahari jam dua siang tepat memancar di atas kepala, mengeringkan udara hingga terasa mencekik leher. Gelombang panas yang membias dari aspal jalanan membuat langkah kaki terasa begitu berat usai menyelesaikan kelas teori tiga sks yang membosankan. Kamu akhirnya menepi, mengikuti langkah Clarissa menuju bangunan kost putri dua lantai yang tersembunyi di dalam gang sempit. Begitu pintu kamar berukuran 3x4 meter itu dirapatkan dan dikunci dari dalam, kebisingan kendaraan di jalan utama seketika lenyap, menyisakan derak monoton dari kipas angin dinding tua yang berputar lambat menghadap kasur. Kemeja putih kampusmu sudah membasah oleh keringat dingin, menempel lengket di sepanjang garis tulang punggung dan dadamu. Kamu melempar ransel asal-asalan ke lantai kayu, lalu menghempaskan tubuh di tepi kasur busanya yang dilapisi sprei sutra tipis berwarna abu-abu. Clarissa melepaskan tas cangklongnya, lalu berdiri hanya sejengkal di hadapanmu, mengusap leher jenjangnya yang berpeluh tipis di bawah sorot lampu kuning kamar yang remang.",
+        dialogue: "Clarissa: 'Gila banget udara siang ini... Kemeja kamu sampai nampak nempel basah begitu di dada. Kamu mau aku ambilkan botol air dingin di kulkas mini, atau mau buka kemejamu dulu biar nggak makin pengap?'",
+        choices: [
+            { text: "Perlahan melepas kancing atas kemejamu satu per satu", nextScene: 1 },
+            { text: "'Tolong ambilkan air dingin di kulkasmu dulu, Clav...'", nextScene: 1 }
+        ]
+    },
+    {
+        narrative: "Clarissa berbalik melangkah menuju kulkas portabel di sudut ruangan. Di dalam kamar kost yang sempit dan minim sirkulasi itu, ia telah menanggalkan pakaian formal kampus dan hanya menyisakan camisole tali spageti tipis berwarna merah marun serta celana kain pendek yang sangat rileks. Saat ia membungkukkan tubuhnya untuk meraih botol air es dari rak bawah, lekuk punggungnya yang mulus serta kilau tipis peluh di sepanjang tulang belakangnya terekspos tanpa tanding di bawah pendar redup ruangan. Pemandangan itu secara drastis mengubah hawa gerah di kamar ini; panas yang semula membakar kulit luar mendadak berubah menjadi desiran gelora intens yang merayap cepat menuju rongga dadamu, mempercepat ketukan jantungmu secara tak terkendali.",
+        dialogue: "Clarissa: 'Kenapa pandangan kamu seperti itu? Dari tadi berdiri sampai sekarang mata kamu nggak berhenti merayap... Kamu kepanasan karena cuaca di luar, atau karena lihat aku seperti ini?'",
+        choices: [
+            { text: "'Sepertinya hawa di dalam kamar kamu ini yang jauh lebih panas...'", nextScene: 2 },
+            { text: "Tersenyum dalam dan meraih lembut pergelangan tangannya yang halus", nextScene: 2 }
+        ]
+    },
+    {
+        narrative: "Clarissa mengulurkan botol yang berembun dingin itu padamu, namun bukannya menjauh atau kembali ke meja belajarnya, ia justru mengambil keputusan untuk duduk sangat dekat di sampingmu di tepi kasur. Jarak yang tersisa di antara kalian terkikis habis sampai kamu dapat merasakan pendar kehangatan alami dari kulit mulusnya. Aroma wangi lilin aromaterapi vanilla berpadu dengan wangi feminin tubuhnya yang khas, menguasai tiap inci udara lembap yang berputar lambat. Tatapan matanya yang selama ini dikenal dingin dan berjarak oleh mahasiswa lain di kampus, kini tampak berkilat sayu, memancarkan gejolak emosi dan hasrat tersembunyi yang tak sanggup lagi ia tutupi.",
+        dialogue: "Clarissa: 'Jujur saja... dari tadi di ruang kuliah pas jam dosen, tiap kali posisi duduk kamu terlalu dekat sama aku, pikiran aku nggak pernah benar-benar fokus...'",
+        choices: [
+            { text: "Meletakkan botol ke lantai dan memangkas sisa jarak di antara kalian", nextScene: 3 },
+            { text: "Menatap lurus bibir tipisnya yang basah dan sedikit bergetar", nextScene: 3 }
+        ]
+    },
+    {
+        narrative: "Sisa-sisa pertahanan batin dan keraguan melenyap tanpa bekas. Kamu meletakkan botol air es yang dingin itu ke lantai kayu, lalu menyusupkan telapak tanganmu yang hangat ke pinggang rampingnya yang dilapisi kain camisole halus. Clarissa menarik napas pendek dengan dada yang membuncah naik-turun, namun ia sama sekali tidak berusaha menarik diri atau bergeser. Sentuhan jemarimu di kulit pinggangnya bagaikan aliran sengatan listrik arus rendah yang menjalar hingga ke tulang belakangnya. Ia sedikit memiringkan kepala, menatapmu dengan binar mata pasrah yang pekat, membiarkan seluruh kendali dirinya runtuh sepenuhnya di tanganmu.",
+        dialogue: "Clarissa: 'Jangan bikin aku menyesal... karena sudah memberanikan diri mengizinkan kamu masuk ke dalam kamar kost aku siang ini...'",
+        choices: [
+            { text: "Menautkan bibirmu ke bibirnya dalam ciuman yang dalam dan menuntut", nextScene: 4 },
+            { text: "Mengecup rahangnya perlahan hingga menyusuri leher jenjangnya", nextScene: 4 }
+        ]
+    },
+    {
+        narrative: "Bibir kalian akhirnya bertaut dalam desakan gairah yang begitu rapat. Ciuman pertama itu mendarat intens dan dahsyat, meluapkan segala bentuk ketertarikan terpendam yang selama berbulan-bulan hanya tersimpan rapat di balik sapaan formal di koridor kampus. Desahan halus dan pasrah yang lolos dari celah bibir Clarissa menyulut gelora yang kian tak tertahankan. Lidahnya menyambut tautanmu dengan keahlian yang memabukkan, sementara kedua tangannya merayap naik ke bahumu, jemarinya tertanam di rambut belakang kepalamu, menarikmu makin merapat tanpa memberi celah sedikit pun.",
+        dialogue: "Clarissa: 'Emmhh... Kamu nakal sekali... Padahal kalau di kelas selalu terlihat diam dan acuh tak acuh...'",
+        choices: [
+            { text: "Perlahan mendorong tubuh moleknya hingga rebah di kasur", nextScene: 5 },
+            { text: "Memperdalam ciuman sambil meremas lembut pinggul mulusnya", nextScene: 5 }
+        ]
+    },
+    {
+        narrative: "Tubuh indah Clarissa kini terbaring pasrah di atas permukaan kasur busa, terkunci sepenuhnya di bawah kungkungan tubuhmu. Dalam posisi terkunci itu, dada camisole tipisnya kembang-kempis cepat, menyuarakan ritme napasnya yang memburu dan berantakan. Telapak tanganmu mulai merayap perlahan menyusuri paha mulusnya yang hangat, naik sedikit demi sedikit dengan tekanan yang mengundang getaran sensual. Sentuhan teliti itu membuat Clarissa melengkungkan punggungnya refleks, menggigit bibir bawahnya erat-erat demi menahan desahan nikmat yang mengancam keluar dari tenggorokannya.",
+        dialogue: "Clarissa: 'Panas sekali... Tolong lepaskan kemejamu... Aku ingin merasakan dadamu tepat menempel di atas tubuhku...'",
+        choices: [
+            { text: "Membuka kemejamu dan menempelkan dada ke tubuhnya", nextScene: 6 },
+            { text: "Menjelajahi leher dan tulang selangkanya dengan ciuman yang membakar", nextScene: 6 }
+        ]
+    },
+    {
+        narrative: "Kemeja kampusmu terlepas dan jatuh begitu saja ke lantai. Ketika kulit dada kalian saling bergesekan tanpa penghalang, rasa basah dari peluh tipis yang menyatu justru membakar sisa kendali diri yang tersisa di kepala. Kamu menjelajahi leher jenjang hingga area bahunya dengan ciuman-ciuman panas yang memabukkan. Kedua tangan Clarissa mencengkeram erat bahu bidangmu, menyalurkan sensasi sengatan gairah luar biasa yang merayapi setiap sel saraf di tubuhnya.",
+        dialogue: "Clarissa: 'Pelan-pelan... Nanti... nanti anak kost di kamar sebelah bisa mendengar suara desahan aku...'",
+        choices: [
+            { text: "Berbisik tepat di telinganya: 'Tahan suara indahmu ini...'", nextScene: 7 },
+            { text: "Sengaja memperdalam gerakan hingga ia makin terbuai", nextScene: 7 }
+        ]
+    },
+    {
+        narrative: "Hembusan bisikan hangatmu tepat di daun telinganya mengirimkan gelombang merinding hingga ke ujung kakinya. Tanganmu menyusup lebih dalam ke balik pakaian tipisnya, menikmati setiap lekuk sensual tubuhnya yang kini sepenuhnya menyerah di bawah penguasaanmu. Udara kamar kost yang sempit terasa kian menipis dan habis, tersedot sepenuhnya oleh gelora murni yang membakar siang hari kalian menjadi ruang intim tanpa batas.",
+        dialogue: "Clarissa: 'Aku... aku sudah tidak tahan lagi... Kamu benar-benar bikin aku gila siang ini...'",
+        choices: [
+            { text: "Meraih kedua pergelangan tangannya dan menguncinya di atas kepala", nextScene: 8 },
+            { text: "Menatap matanya yang basah penuh ketundukan dan kepasrahan", nextScene: 8 }
+        ]
+    },
+    {
+        narrative: "Kamu mengunci kedua jemarinya di atas kepala, menatap lurus ke dalam matanya yang dipenuhi binar kepasrahan murni. Tak ada lagi sekat formalitas sebagai kawan sekelas; yang tersisa hanyalah dua insan yang terperangkap dalam jerat gairah murni di tengah teriknya siang hari. Napas kalian bersatu dalam irama yang kian berburu dan liar, tepat berada di ambang puncak penyerahan diri secara utuh.",
+        dialogue: "Clarissa: 'Lakukan... Sentuh aku lebih jauh lagi, buat aku jadi milikmu sepenuhnya hari ini...'",
+        choices: [
+            { text: "Menanggalkan rintangan terakhir dan menyatu dengannya", nextScene: 9 }
+        ]
+    },
+    {
+        narrative: "Tepat ketika gairah menyengat di titik tertinggi dan kamu hendak menanggalkan sisa rintangan kain terakhirnya, sebuah hantaman brutal mendarat keras di pintu kamar kost! Gedoran liar itu menggetarkan kusep kayu yang rapuh, disusul suara gagang pintu yang diguncang paksa dan putaran kunci dari luar secara mendadak!",
+        dialogue: "Suara Luar: 'Clarissa! Buka pintunya sekarang! Aku tahu kamu di dalam lagi masukkan cowok lain!'",
+        choices: [
+            { text: "BERSAMBUNG KE EPISODE 2...", nextScene: 0 }
+        ]
+    }
+];
+
+let currentScene = 0;
+
+function renderScene() {
+    const scene = scenes[currentScene];
+    const storyBox = document.getElementById('storyBox');
+    const choiceBox = document.getElementById('choiceBox');
+    const progressBar = document.getElementById('progress');
+
+    // Update Progress
+    progressBar.style.width = ((currentScene + 1) / scenes.length * 100) + '%';
+
+    // Render Story
+    storyBox.innerHTML = `
+        <div class="narrative">${scene.narrative}</div>
+        <div class="dialogue">
+            <span class="character-name">${scene.dialogue.split(':')[0]}</span>
+            ${scene.dialogue.split(':')[1]}
+        </div>
+    `;
+
+    // Render Choices
+    choiceBox.innerHTML = '';
+    scene.choices.forEach(choice => {
+        const button = document.createElement('button');
+        button.className = 'choice-btn';
+        button.innerText = choice.text;
+        button.onclick = () => {
+            currentScene = choice.nextScene;
+            renderScene();
+            storyBox.scrollTop = 0;
+        };
+        choiceBox.appendChild(button);
+    });
+}
+
+// Inisialisasi Pertama
+renderScene();
+</script>
+
+</body>
+</html>
